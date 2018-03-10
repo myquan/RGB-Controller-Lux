@@ -1,5 +1,5 @@
 QualityReport
-2018年3月9日 下午 02:52:42
+2018年3月10日 上午 09:11:13
 
 ------ Start build(Controller-Lux, DefaultBuild) ------
 ------ Build ended(Error:0, Warning:0)(Controller-Lux, DefaultBuild) ------
@@ -31,13 +31,13 @@ QualityReport
  C:\Program Files (x86)\Renesas Electronics\CS+\CACX
 *Memory Usage
  *Private Working Set
-  278888 MB
+  285724 MB
  *Number of GDI Objects
-  2049
+  2021
  *Number of USER Objects
-  1208
+  1152
  *Opened Files
-  17 editors, 17 files, 103 KB
+  11 editors, 11 files, 96 KB
 
 --- Build Tool Plug-in Information ---
 V850 Build tool CA850 Plug-in

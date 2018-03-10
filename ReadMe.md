@@ -1,1 +1,2 @@
-Embedded C Program
+# RGB-Controller-Lux
+Lux version
