@@ -1,0 +1,253 @@
+QualityReport
+2018年3月9日 下午 02:52:42
+
+------ Start build(Controller-Lux, DefaultBuild) ------
+------ Build ended(Error:0, Warning:0)(Controller-Lux, DefaultBuild) ------
+
+
+
+--- System Information ---
+*OS Version
+ Microsoft Windows 10 專業版 (-, 10.0.16299, WOW64)
+*Language
+ 中文(台灣)
+*.NET Framework Version
+ Microsoft .NET Framework 4 [.NET 4.6 / .NET 4.6.1] (4.0.30319.42000)
+
+--- Application Information ---
+*Product Name
+ CS+ for CA,CX
+*Package Version
+ V4.00.01  [07 Jun 2017]
+*Version
+ V5.02.00.02 [09 May 2017]
+*Assembly Version
+ 3.12.10.1
+*Sales Area
+ Japan
+*Product License
+ RL78,78K License Pack 1 (CA78K0R,CA78K0) Node Locked License(permanent); 
+*Execution Place
+ C:\Program Files (x86)\Renesas Electronics\CS+\CACX
+*Memory Usage
+ *Private Working Set
+  278888 MB
+ *Number of GDI Objects
+  2049
+ *Number of USER Objects
+  1208
+ *Opened Files
+  17 editors, 17 files, 103 KB
+
+--- Build Tool Plug-in Information ---
+V850 Build tool CA850 Plug-in
+ *Version
+  V5.01.00.01 [26 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCA850.dll
+78K0 Build tool CA78K0 Plug-in
+ *Version
+  V5.00.00.02 [03 Jul 2014]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCC78K0.dll
+RL78,78K0R Build tool CA78K0R Plug-in
+ *Version
+  V5.00.00.03 [30 Jun 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCC78K0R.dll
+V850E2 Build tool CX Plug-in
+ *Version
+  V5.00.00.02 [03 Jul 2014]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCX.dll
+
+--- Debug Tool Plug-in Information ---
+78K0 Emulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugTool78K0Emulator.dll
+RL78,78K0R Emulator Plug-in
+ *Version
+  V4.00.00.04 [25 Nov 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugTool78K0REmulator.dll
+RL78,78K0R Simulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugTool78K0RSimulator.dll
+78K0 Simulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugTool78K0Simulator.dll
+V850E2 Emulator Plug-in
+ *Version
+  V4.00.01.01 [12 Apr 2017]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugToolV850E2REmulator.dll
+V850E2 Simulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugToolV850E2RSimulator.dll
+V850 Emulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugToolV850Emulator.dll
+V850 Simulator Plug-in
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  DebugToolV850Simulator.dll
+
+--- Other Plug-in Information ---
+Code Generator Plug-in
+ *Version
+  V3.07.00.05 [27 May 2017]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  CodePart.dll
+Code Generator/PinView Plug-in
+ *Version
+  V1.09.00.06 [27 May 2017]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodePart2.dll
+Pin Configurator Plug-in
+ *Version
+  V1.54.01.01 [31 Jul 2014]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PinConfig.dll
+Program Analyzer Plug-in
+ *Version
+  V4.03.00.05 [24 Nov 2016]
+ *Assembly Version
+  3.12.11.9
+ *DLL File Name
+  ProgramAnalyzer.dll
+IronPython Console Plug-in
+ *Version
+  V1.27.00.07 [22 Aug 2014]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PythonConsole.dll
+Editor plug-in DLL
+ *Version
+  V1.06.00.04 [01 Aug 2014]
+ *Assembly Version
+  1.1.0.0
+ *DLL File Name
+  SEditor.dll
+Stack Usage Tracer
+ *Version
+  V1.05.00.02 [30 Jul 2014]
+ *Assembly Version
+  1.30.11.15
+ *DLL File Name
+  Stk.dll
+Tool Interface Protocol (TIP) Plug-in
+ *Version
+  V1.24.00.02 [10 Dec 2012]
+ *Assembly Version
+  2.12.12.10
+ *DLL File Name
+  Tip.DLL
+Update Manager Plug-in
+ *Version
+  V2.02.00.05 [17 Jul 2014]
+ *Assembly Version
+  1.13.6.20
+ *DLL File Name
+  Update.dll
+
+Debug Tool Common Interface
+ *Version
+  V4.00.00.01 [27 Oct 2016]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  CommonDebuggerInterface.dll
+Device Information Common Interface
+ *Version
+  V5.00.00.01 [20 Jun 2014]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  DeviceInformation.dll
+
+--- Main Project Information ---
+C:\Users\hodge\Documents\working\firmware\BBQ\Controller-Lux2018-2-27\Controller-Lux.mtpj
+Microcontroller Information
+ *R5F10EGC
+  *File Name: Version
+   RL78_Productlist.xml: V6.000000
+   R5F10EGC_common.xml: V1.10.00.XX.01
+   DR5F10EGC.DVF: V1.01
+   g1a_gxana.ti: E1.00a
+   -: -
+  
+
+Build Tool Information
+ *CA78K0R
+   * Version
+     V5.00.00.03 [30 Jun 2016]
+   * The Version of the Compiler Package
+     V1.72
+  
+
+Debug Tool Information
+ *RL78 E1(Serial)
+  Debugger Library V4.00.00.04 [25 Nov 2016]
+  
+
+Other Tool Information
+ *None
+
+ *Pin Configurator
+ *Program Analyzer
+  *Version
+   V4.03.00.05 [24 Nov 2016]
+
+ *None
+
+ *Code Generator
+Other Information
+ *RL78/G1A Code Library
+  *Version
+   V2.04.00.02 [19 Apr 2017]
+  *Description
+   Code library for RL78/G1A code generation plugin.
+
+

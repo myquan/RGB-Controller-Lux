@@ -1,0 +1,359 @@
+#05
+;FF     PUBLIC
+02FFED8@@CPR1
+02FFEDE@@FPRF1
+02FFEDF@@FPRF2
+02FFEDE@@FPRFP
+02FFED8@@FPRS
+02FFEDC@@FPRXD
+02FFEDC@@FPRXP
+02FFEDD@@FPRXS
+01001C1@@cudiv
+01001F5@@curem
+01002A6@@divuw
+01002A6@@divuwe
+0100185@@ismul
+0100185@@iumul
+01002DA@@lsadd
+0100196@@lsmul
+01002E9@@lssub
+01002DA@@luadd
+010022B@@ludiv
+0100196@@lumul
+010026A@@lurem
+01002FB@@lursh
+01002E9@@lusub
+02FF8E8_?DATA
+02FFA54_?DATAL
+02FFA54_?DATS
+02FFA54_?INIS
+02FFA54_?INIT
+02FFA54_?INITL
+0100002_?RLINIT
+0100002_?R_INIS
+0100A0C_?R_INIT
+02FF798_@BRKADR
+02FF786_@DIVR
+02FF780_@FNCENT
+02FF700_@FNCTBL
+02FF78A_@LDIVR
+0000000_@MAA
+02FF7BA_@MEMBTM
+02FF79A_@MEMTOP
+02FFED8_@RTARG0
+02FFED9_@RTARG1
+02FFEDA_@RTARG2
+02FFEDB_@RTARG3
+02FFEDC_@RTARG4
+02FFEDD_@RTARG5
+02FFEDE_@RTARG6
+02FFEDF_@RTARG7
+01FFE20_@SADBEG
+00000C0_@SADSIZ
+02FF782_@SEED
+02FFED4_@SEGAX
+02FFED5_@SEGBC
+02FFED6_@SEGDE
+02FFED7_@SEGHL
+00FFED4_@STBEG
+00FFA54_@STEND
+02FF792_@TOKPTR
+0100185_@cend
+01000D8_@cstart
+0100008_@vect08
+010000A_@vect0a
+010000C_@vect0c
+0100014_@vect14
+010001E_@vect1e
+0100020_@vect20
+0100024_@vect24
+0100026_@vect26
+010002A_@vect2a
+010002C_@vect2c
+010002E_@vect2e
+0100030_@vect30
+0100032_@vect32
+0100034_@vect34
+0100044_@vect44
+0100046_@vect46
+0100048_@vect48
+02FF902_BrightLevels
+02FF97E_ColorBlue
+02FF996_ColorGreen
+02FF984_ColorPurple
+02FF990_ColorRed
+02FF98A_ColorWhite
+02FF99C_ColorYellow
+02FF9D4_NTC
+02FFA08_PT1000
+0100A82_R_ADC_Create
+0100B1B_R_ADC_Get_Result
+0100B17_R_ADC_Set_OperationOff
+0100B13_R_ADC_Set_OperationOn
+0100AFF_R_ADC_Start
+0100B09_R_ADC_Stop
+0100A66_R_CGC_Create
+0100A7D_R_CGC_Get_ResetSource
+0100DB6_R_IIC20_Create
+0100E37_R_IIC20_Master_Receive
+0100DFE_R_IIC20_Master_Send
+0100E86_R_IIC20_StartCondition
+0100E75_R_IIC20_Stop
+0100EC3_R_IIC20_StopCondition
+0100F0A_R_IICA0_Create
+0100FB7_R_IICA0_Master_Receive
+0100F6D_R_IICA0_Master_Send
+0100F63_R_IICA0_Stop
+0100F68_R_IICA0_StopCondition
+0101426_R_INTC0_Start
+010142D_R_INTC0_Stop
+0101434_R_INTC1_Start
+010143B_R_INTC1_Stop
+0101442_R_INTC2_Start
+0101449_R_INTC2_Stop
+01013BE_R_INTC_Create
+0100A27_R_MAIN_UserInit
+0102B33_R_PCLBUZ0_Create
+0102B43_R_PCLBUZ0_Start
+0102B47_R_PCLBUZ0_Stop
+0101450_R_PORT_Create
+0100B24_R_SAU0_Create
+0100DA6_R_SAU1_Create
+0100A2F_R_Systeminit
+01012FE_R_TAU0_Channel0_Start
+010132B_R_TAU0_Channel0_Stop
+0101358_R_TAU0_Channel2_Start
+0101369_R_TAU0_Channel2_Stop
+010137A_R_TAU0_Channel5_Start
+010138B_R_TAU0_Channel5_Stop
+010139C_R_TAU0_Channel6_Start
+01013AD_R_TAU0_Channel6_Stop
+0101119_R_TAU0_Create
+0100B3A_R_UART0_Create
+0100C16_R_UART0_Receive
+0100C3C_R_UART0_Send
+0100BCA_R_UART0_Start
+0100BF5_R_UART0_Stop
+0100C70_R_UART1_Create
+0100D4C_R_UART1_Receive
+0100D72_R_UART1_Send
+0100D00_R_UART1_Start
+0100D2B_R_UART1_Stop
+010164B_adjustLight
+02FF8F7_appTimerKickCount
+02FF90C_brightnessIndex
+02FF880_buffGesture
+0102D30_checkUserTimeout
+010265E_clearEvent
+0102689_clearModeEvent
+02FF9A2_configData
+02FF876_data2Write
+02FFA48_degreeX
+0101C17_delay20ms
+02FF802_digitData
+0101C25_disPlayDigits
+02FF796_errno
+0102D85_exit
+02FF9C2_gADCReadyFlag
+02FF90B_gAppTimerKick
+02FF900_gBrightIndex
+02FF901_gColorIndex
+02FF934_gColors
+02FF910_gColors2
+02FF958_gColors_Party1
+02FF7E6_gConfigData
+02FF8F6_gDPOn
+02FF8EE_gDelayCounter
+02FF9BE_gEvents
+02FF96A_gExpTable
+02FF8F9_gGodTimerCount
+02FF8E8_gI2CEnd
+02FF8E9_gIICA0Done
+02FF9BD_gKeyPressedDuration
+02FF8EB_gKeyStatus
+02FF90A_gLightingMode
+02FF8FA_gMeasureTimerCount
+02FF9C0_gModeEvents
+02FF90E_gParty1ColorIndex
+02FF9BC_gPressedKey
+02FF8FF_gProbe
+02FF8FD_gProbe1Hot
+02FF8FE_gProbe2Hot
+02FF8F8_gSettingDirty
+02FF8FC_gStoveHot
+02FF9D2_gTemperatureUnit
+02FF8F1_gTimerCountdown
+02FF8F2_gTimerCounter
+02FF90F_gTimerIsOn
+02FF8F0_gTimerLimit
+02FFA52_gUserTimeLimit
+02FFA50_gUserTimerCount
+02FFA4E_gUserTimerCounting
+02FF8EC_gWorkingMode
+02FF7CE_g_iic20_master_status_flag
+02FF7D6_g_iic20_rx_count
+02FF7D8_g_iic20_rx_length
+02FF7D2_g_iic20_tx_count
+02FF7DA_g_iica0_master_status_flag
+02FF7E0_g_iica0_rx_cnt
+02FF7DE_g_iica0_rx_len
+02FF7DB_g_iica0_slave_status_flag
+02FF7E4_g_iica0_tx_cnt
+02FF7C0_g_uart0_rx_count
+02FF7C2_g_uart0_rx_length
+02FF7BC_g_uart0_tx_count
+02FF7CA_g_uart1_rx_count
+02FF7CC_g_uart1_rx_length
+02FF7C6_g_uart1_tx_count
+02FF8E4_gestureBuf
+0102BCD_getDegree
+02FF7D4_gp_iic20_rx_address
+02FF7D0_gp_iic20_tx_address
+02FF7DC_gp_iica0_rx_address
+02FF7E2_gp_iica0_tx_address
+02FF7BE_gp_uart0_rx_address
+02FF7BA_gp_uart0_tx_address
+02FF7C8_gp_uart1_rx_address
+02FF7C4_gp_uart1_tx_address
+0102029_handleCommonTask
+01021EB_handleLightModeTask
+01020A5_handleLightTask
+0101FFD_handleModeTask
+010250A_handleProbe1ModeTask
+01025B1_handleProbe2ModeTask
+01022A2_handleStoveModeTask
+0102343_handleTimerModeTask
+01023A6_handleTimerModeTask2
+0100A5E_hdwinit
+02FF9D0_head
+02FFA47_headGesture
+0102BBF_initGestureChannel
+010151E_init_app
+0101471_init_variables
+010168D_lightnessCurve
+01016D8_lightnessCurve2
+0100A0C_main
+0101C50_openTM1650
+02FF9C6_probe1Temperature
+02FF9CC_probe1Threshold
+02FF9C8_probe2Temperature
+02FF9CE_probe2Threshold
+0102B9E_readEE
+01026F7_readTemperature
+02FF812_rec
+0102B4B_saveConfig
+010264E_sendEvent
+0102679_sendModeEvent
+0101E4C_showDigit
+01026A4_showDigits
+0101A24_showStoveHot
+0101C71_showTemperature
+0101D31_showTimer
+010155B_slowLightup
+0101723_slowlyChangeLightC
+0102D27_startUserTimer
+0102D41_stkinit
+02FF9C4_stoveTemperature
+02FF9CA_stoveThreshold
+02FF9D1_tail
+02FFA46_tailGesture
+02FF8EA_toggleFlag
+02FF90D_variationStage
+0102B7D_writeEE
+;FF     @cstart
+;FF     r_main
+;FF     r_systeminit
+;FF     r_cg_cgc
+;FF     r_cg_cgc_user
+;FF     r_cg_adc
+;FF     r_cg_adc_user
+<010031A_r_adc_interrupt
+;FF     r_cg_serial
+;FF     r_cg_serial_user
+<010104A_iica0_master_handler
+0101041_r_iic20_callback_master_error
+0101045_r_iic20_callback_master_receiveend
+0101046_r_iic20_callback_master_sendend
+010049A_r_iic20_interrupt
+0101105_r_iica0_callback_master_error
+0101109_r_iica0_callback_master_receiveend
+0101111_r_iica0_callback_master_sendend
+01005AE_r_iica0_interrupt
+010100B_r_uart0_callback_error
+0101005_r_uart0_callback_receiveend
+010100A_r_uart0_callback_sendend
+0101006_r_uart0_callback_softwareoverrun
+0100322_r_uart0_interrupt_receive
+010039A_r_uart0_interrupt_send
+010103D_r_uart1_callback_error
+010100F_r_uart1_callback_receiveend
+010103C_r_uart1_callback_sendend
+0101038_r_uart1_callback_softwareoverrun
+01003DE_r_uart1_interrupt_receive
+0100456_r_uart1_interrupt_send
+;FF     r_cg_timer
+;FF     r_cg_timer_user
+<01005E6_r_tau0_channel0_interrupt
+01005E8_r_tau0_channel1_interrupt
+01005EA_r_tau0_channel2_interrupt
+0100631_r_tau0_channel3_interrupt
+0100633_r_tau0_channel5_interrupt
+010067E_r_tau0_channel6_interrupt
+01007CC_r_tau0_channel7_interrupt
+;FF     r_cg_intc
+;FF     r_cg_intc_user
+<01007CE_r_intc0_interrupt
+0100814_r_intc1_interrupt
+0100859_r_intc2_interrupt
+;FF     r_cg_port
+;FF     r_cg_port_user
+;FF     Qapp
+<02FF9B8_blue
+02FF9B0_blue
+02FF7F6_blueDir
+02FF800_blueDir
+02FF7F2_blueStep
+02FF7FC_blueStep
+02FF9B2_flashStage
+02FF9BA_flashStage
+02FF9AE_green
+02FF9B6_green
+02FF7F5_greenDir
+02FF7FF_greenDir
+02FF7FA_greenStep
+02FF7F0_greenStep
+02FF9AC_red
+02FF9B4_red
+02FF7FE_redDir
+02FF7F4_redDir
+02FF7EE_redStep
+02FF7F8_redStep
+;FF     TM1650
+;FF     handleKey
+;FF     taskHandler
+;FF     temperature
+;FF     r_cg_pclbuz
+;FF     r_cg_pclbuz_user
+;FF     EEPROM
+;FF     Gesture
+<02FFA4D_remainingChar
+02FFA4C_step
+;FF     UserTimer
+<02FF8E6_internalUserTimerCount
+;FF     @imul
+;FF     @lmul
+;FF     @cudiv
+;FF     @curem
+;FF     @ludiv
+;FF     @lurem
+;FF     @divuw
+;FF     @ladd
+;FF     @lsub
+;FF     @lursh
+;FF     @SEGREG
+;FF     @stkinit
+;FF     @RTARG0
+;FF     exit
+;FF     @rom
+=
+
