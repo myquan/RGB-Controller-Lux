@@ -6,6 +6,8 @@ typedef struct {
 	uint8_t lightingMode;
 	uint8_t colorIndex;
 	uint8_t brightIndex;
+	uint8_t userTimeLimit;
+	uint8_t temperatureUnit;
 	uint8_t temperatureThreshold[3];
 } ConfigData_t;
 

@@ -27,7 +27,7 @@ extern uint16_t gEvents;  //common events
 
 void handleModeTask(void); //Handle task for specific mode
 void handleCommonTask(void); //Handle task common to all modes
-void handleLightTask(void); //Manage how the lights changes
+void handleUITask(void); //Manage how the lights changes (User Interface handler)
 
 extern void handleColorModeEvent(void);
 extern void handleLevelModeEvent(void); //Change light level mode

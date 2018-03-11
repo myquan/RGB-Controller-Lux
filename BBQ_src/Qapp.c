@@ -11,6 +11,7 @@
 #include "taskHandler.h"
 #include "EEPROM.h"
 #include "Gesture.h"
+#include "UserTimer.h"
 
 //=== App related ===
 uint8_t gWorkingMode = LightMode;
@@ -44,6 +45,11 @@ uint8_t gParty1ColorIndex=0;
 //=== Timer related ===
 uint8_t gTimerIsOn=0; //the User Timer in on.
 
+//=== UI related ===
+uint8_t gDoLightFlash=0;
+uint8_t gLightOn=1; //control  RGB is on or Off
+
+
 ColorType gColors2[TotalColors] = 	{{0,0,0},
 									{90,130,100},
 									{100,125,130},
@@ -75,14 +81,14 @@ ConfigData_t gConfigData;
 void init_variables(void){
 	uint16_t i;
 	gIICA0Done=0;
-	configData[0]=1; //start from 2nd byte
+	configData[0]=1; //start from 2nd byte, do a dummy write to set ReadEE address
 	if (MD_OK == writeEE(configData,1)){
 		for(i=0; i<25000; i++){
 			NOP();
 		}
-		while(!gIICA0Done);
+		//while(!gIICA0Done);
 		gIICA0Done=0;
-		readEE(&gConfigData,8);
+		readEE(&gConfigData,16);
 		for(i=0; i<25000; i++){
 			NOP();
 		}
@@ -92,23 +98,28 @@ void init_variables(void){
 			gConfigData.flag=0x88;
 			gConfigData.workingMode=1;  //light mode
 			gConfigData.lightingMode=0; //Mono
+			gConfigData.brightIndex= DefaultBrightIndex;
 			gConfigData.colorIndex =	DefaultColorIndex; 
-			gConfigData.brightIndex =	DefaultBrightIndex; //birghtness
+			gConfigData.temperatureUnit = DefaultTemperatureUnit;
+			gConfigData.userTimeLimit =	DefaultUserTimeLimit; //Celsius or Farenheight
 			saveConfig();
 		}
 	}
-	
-	gWorkingMode = gConfigData.workingMode;
-	
+	gWorkingMode = 0;
+	//gWorkingMode = gConfigData.workingMode;	
 	//gWorkingMode = StoveMode;
 	gLightingMode =	gConfigData.workingMode;
 	gLightingMode =	gConfigData.lightingMode;
 	gColorIndex = 	gConfigData.colorIndex;
+	gUserTimeLimit = gConfigData.userTimeLimit;
 	gBrightIndex =	gConfigData.brightIndex;
+	gBrightIndex =	DefaultBrightIndex;
+	gTemperatureUnit = gConfigData.temperatureUnit;
 	//gCurrentTemperatureThreshold = (TemperatureThresholdInF -32)*5/9 ;
 	gas20=gas40=gas60=gas80=gas99=1;
 	indLight=indStove=indTimer=indProbe1=indProbe2=1;
-	buzzer=0;
+	//buzzer = 1;
+	//buzzer=0;
 	gProbe1Hot=0;
 	gProbe2Hot=0;
 	gStoveHot=0;
@@ -120,7 +131,7 @@ void init_app(void){
 	uint16_t i;
 	init_variables();
 	//R_PCLBUZ0_Start();
-	buzzer=0;
+	//buzzer=0;
 	//gas99=0;
 //	CS_Max31856 = 1;
 	//adjustLight(gColorIndex, gBrightIndex);

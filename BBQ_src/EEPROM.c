@@ -20,7 +20,7 @@ void saveConfig(void){
 	data2Write.addr=0;
 	data2Write.data = gConfigData;
 	gIICA0Done=0;
-	writeEE(&data2Write,9);
+	writeEE(&data2Write,17);
 	while(!gIICA0Done);
 	for(i=0; i<25000; i++){
 		NOP();

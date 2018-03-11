@@ -54,40 +54,71 @@ void handleCommonTask(void){
 	}else if (gEvents & evTimeout){
 		clearEvent(evTimeout);
 		gTimerIsOn=1;
+		gDoLightFlash=1;
 	}else if (gEvents & evRoutineJob){
-		if ((gGodTimerCount % 8)==0){ //check to save every 2 seconds
+		clearEvent(evRoutineJob);
+		if ((gGodTimerCount % 16)==0){ //check to save every 2 seconds
 			if (gSettingDirty){
 				gConfigData.colorIndex = gColorIndex;
 				gConfigData.workingMode = gWorkingMode;
 				gConfigData.lightingMode = gLightingMode;
 				gConfigData.brightIndex = gBrightIndex;
+				gConfigData.userTimeLimit = gUserTimeLimit;
+				gConfigData.temperatureUnit = gTemperatureUnit;
 				gConfigData.temperatureThreshold[0]= stoveThreshold;
+				gConfigData.temperatureThreshold[1]= probe1Threshold;
+				gConfigData.temperatureThreshold[2]= probe2Threshold;
 				saveConfig();	
 				gSettingDirty=0;
+			}
+		}
+		R_PCLBUZ0_Stop();;
+		if ((gGodTimerCount % 2)==0){
+			if (gDoLightFlash){
+				if (gLightOn==1){
+					gLightOn=0;
+					R_PCLBUZ0_Start();;
+				}else{
+					gLightOn=1;
+				}
+			}else{
+				gLightOn=1;
 			}
 		}
 	}
 }
 
-//=============================
-//= Handle how lights changes =
-//=============================
-void handleLightTask(void){
+//===================================================
+//= Handle how lights changes and Display shows 	=
+//===================================================
+void handleUITask(void){
 	if (gStoveHot==1){
 		if (gAppTimerKick){ //AppTimer will kick every 20ms
 			gAppTimerKick = 0;
 			appTimerKickCount++;
 		}	
 		if (appTimerKickCount > PartyMode2Speed){ //After n * 20ms, the color need to be changed.
-			showStoveHot();
-			appTimerKickCount = 0; //reset timing
+			if (gLightOn){
+				showStoveHot();
+				appTimerKickCount = 0; //reset timing
+			}else{
+				redControl = 0;
+				greenControl = 0;
+				blueControl =0;
+			}
 		}
 	}else{		
 		switch(gLightingMode){
 			case MonoMode:
-				redControl = gColors[gColorIndex].red * BrightLevels[gBrightIndex];
-				greenControl = gColors[gColorIndex].green * BrightLevels[gBrightIndex];
-				blueControl = gColors[gColorIndex].blue * BrightLevels[gBrightIndex];
+				if (gLightOn){
+					redControl = gColors[gColorIndex].red * BrightLevels[gBrightIndex];
+					greenControl = gColors[gColorIndex].green * BrightLevels[gBrightIndex];
+					blueControl = gColors[gColorIndex].blue * BrightLevels[gBrightIndex];
+				}else{
+					redControl = 0;
+					greenControl = 0;
+					blueControl =0;
+				}
 			break;
 			case PartyMode:
 				if (gAppTimerKick){ //AppTimer will kick every 20ms
@@ -95,7 +126,13 @@ void handleLightTask(void){
 					appTimerKickCount++;
 				}	
 				if (appTimerKickCount > PartyMode2Speed){ //After n * 20ms, the color need to be changed.
-					slowlyChangeLightC();
+					if (gLightOn){
+						slowlyChangeLightC();
+					}else{
+						redControl = 0;
+						greenControl = 0;
+						blueControl =0;
+					}				
 					appTimerKickCount = 0; //reset timing
 				}
 
@@ -104,38 +141,36 @@ void handleLightTask(void){
 	}
 	switch(gWorkingMode){
 		case LightMode:
-			indLight=0;
-			indStove=indTimer=indProbe1=indProbe2=1;
+			indLight=IndicatorLEDOn;
+			indStove=indTimer=indProbe1=indProbe2=IndicatorLEDOff;
 			showDigit(1, Code_C);
 			showDigit(2, Code_O);
 			showDigit(3, Code_L);
 			showDigit(4, Code_R);
 		break;
 		case StoveMode:
-			indStove=0;
-			indLight=indTimer=indProbe1=indProbe2=1;
+			indStove=IndicatorLEDOn;
+			indLight=indTimer=indProbe1=indProbe2=IndicatorLEDOff;
 		
 		break;
 		case TimerMode:
-			indTimer=0;
-			indStove=indLight=indProbe1=indProbe2=1;
+			indTimer=IndicatorLEDOn;
+			indStove=indLight=indProbe1=indProbe2=IndicatorLEDOff;
 			//showDigit(1,11);//Adp
 			if (gUserTimerCounting){
-				showTimer(gUserTimerCount);
+				showTimer(gUserTimerCount*4);
 			}else{
 				showTimer(gUserTimeLimit*4);
 			}
 		break;
 		case Probe1Mode:
 			//showDigit(1,99);//clear digit
-			indProbe1=0;
-			indLight=indTimer=indStove=indProbe2=1;
-			
+			indProbe1=IndicatorLEDOn;
+			indLight=indTimer=indStove=indProbe2=IndicatorLEDOff;			
 		break;
 		case Probe2Mode:
-		P0.3=0;
-			indProbe2=0;
-			indLight=indTimer=indStove=indProbe1=1;
+			indProbe2=IndicatorLEDOn;
+			indLight=indTimer=indStove=indProbe1=IndicatorLEDOff;
 		break;
 	}
 	
@@ -212,13 +247,38 @@ void handleStoveModeTask(void){
 		clearModeEvent(KeyShortPressed);
 		switch (gPressedKey){
 		case UpKey:
-			gStoveHot +=128; //escape warning;
+			if (gDoubleKeyFlag==1){
+				gDoubleKeyFlag=0;
+				if (gTemperatureUnit==0){
+					gTemperatureUnit=1;
+				}else{
+					gTemperatureUnit=0;
+				}
+				gSettingDirty=1;
+				gProbe=0;
+				sendEvent(evMeasureTemperature);				
+			}else{
+				if (stoveThreshold<251){
+					stoveThreshold +=1;
+				}
+				//gStoveHot +=128; //escape warning;
+			}
 			break;
 		case DownKey:
-			if (gColorIndex>0){
-				gColorIndex--;			
+			if (gDoubleKeyFlag==1){
+				gDoubleKeyFlag=0;
+				if (gTemperatureUnit==0){
+					gTemperatureUnit=1;
+				}else{
+					gTemperatureUnit=0;
+				}
+				gSettingDirty=1; //mark to save into EEPROM
+				gProbe=0;
+				sendEvent(evMeasureTemperature);
 			}else{
-				gColorIndex= TotalColors-1;
+				if (stoveThreshold>1){
+					stoveThreshold--;			
+				}
 			}
 			break;
 		case FunctionKey: //switch light mode: mono/party
@@ -264,17 +324,62 @@ void handleTimerModeTask(void){
 		clearModeEvent(KeyShortPressed);
 		switch (gPressedKey){
 		case UpKey:
-			if (gUserTimeLimit<20000){
-				gUserTimeLimit++;
+			if (gDoubleKeyFlag==1){
+				gDoubleKeyFlag=0;
+				//toggle User Timer
+				gTimerIsOn=0;
+				gDoLightFlash=0;
+				if (gUserTimerCounting){
+					gUserTimerCounting=0;
+				}else{
+					gUserTimerCounting=1;
+					//gUserTimerCount=gUserTimeLimit;
+					startUserTimer();
+				}
+			}else{
+				if (gUserTimerCounting){
+				//we shouldn't change TimeLimit when timer is active.	
+				}else{
+					if (gUserTimeLimit<20000){
+						if (gUserTimeLimit<60){
+							gUserTimeLimit++;
+						}else if (gUserTimeLimit< 60*60){ //Less than 1 hour
+							gUserTimeLimit+=60;
+						}
+					}
+					gSettingDirty=1;
+				}
 			}
-			showTimer(gUserTimeLimit*4);
+			//showTimer(gUserTimeLimit*4);
 
 			break;
 		case DownKey:
-			if (gUserTimeLimit >1){
-				gUserTimeLimit--;
+			if (gDoubleKeyFlag==1){
+				gDoubleKeyFlag=0;
+				gTimerIsOn=0;
+				gDoLightFlash=0;
+				if (gUserTimerCounting){
+					gUserTimerCounting=0;
+				}else{
+					gUserTimerCounting=1;
+					//gUserTimerCount=gUserTimeLimit;
+					startUserTimer();
+				}
+			}else{
+				if (gUserTimerCounting){
+				//we shouldn't change TimeLimit when timer is active.	
+				}else{
+					if (gUserTimeLimit >1){
+						if (gUserTimeLimit<=60){
+							gUserTimeLimit--;
+						}else if (gUserTimeLimit< 60*60){ //Less than 1 hour
+							gUserTimeLimit-=60;
+						}
+						gSettingDirty=1;
+					}
+				}
 			}
-			showTimer(gUserTimeLimit*4);
+			//showTimer(gUserTimeLimit*4);
 			break;
 		case FunctionKey: //This will never happen.
 			gWorkingMode = Probe1Mode;

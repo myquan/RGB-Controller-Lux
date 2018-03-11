@@ -198,6 +198,7 @@ __interrupt static void r_tau0_channel6_interrupt(void)
 				//gPressedKey = NoKey;
 				gKeyStatus = KeyStatus_UnPressed;
 				R_INTC0_Start();	//?i¡¦_upKey?¡±??A_¡Âa?O
+				R_INTC2_Start();	//?i¡¦_upKey?¡±??A_¡Âa?O
 				R_TAU0_Channel6_Stop();	//?¢G?Y-n|Ascan key status?F.
 				gKeyPressedDuration = 0;
 			}else{
@@ -208,6 +209,9 @@ __interrupt static void r_tau0_channel6_interrupt(void)
 							sendModeEvent(KeyLongPressed);
 						}else{						
 							gKeyStatus = KeyStatus_ShortPressed;
+							if (!upKey & !downKey){
+								gDoubleKeyFlag=1;
+							}
 						}
 					}else {				
 					}				
@@ -230,6 +234,7 @@ __interrupt static void r_tau0_channel6_interrupt(void)
 					gPressedKey = NoKey;
 				}
 				gKeyStatus = KeyStatus_UnPressed;
+				R_INTC0_Start();	//?i¡¦_upKey?¡±??A_¡Âa?O
 				R_INTC2_Start();	//?i¡¦_upKey?¡±??A_¡Âa?O
 				R_TAU0_Channel6_Stop();	//?¢G?Y-n|Ascan key status?F.
 				gKeyPressedDuration = 0;
@@ -241,6 +246,9 @@ __interrupt static void r_tau0_channel6_interrupt(void)
 							sendModeEvent(KeyLongPressed);
 						}else{						
 							gKeyStatus = KeyStatus_ShortPressed;
+							if (!upKey & !downKey){
+								gDoubleKeyFlag=1;
+							}
 						}
 					}else {				
 					}				

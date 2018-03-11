@@ -26,7 +26,7 @@ extern uint16_t getTemperature(void);
 #define upKey	P13.7
 #define downKey P5.1
 #define lite	P3.0
-#define buzzer	P7.5
+//#define buzzer	P7.5
 #define gas20	P7.0
 #define gas40	P7.1
 #define gas60	P7.2
@@ -39,6 +39,8 @@ extern uint16_t getTemperature(void);
 #define indProbe1	P2.5
 #define indProbe2	P2.6
 #define igniterControl	P2.7
+#define IndicatorLEDOn	0
+#define IndicatorLEDOff	1
 
 //ADC input for each probe
 #define ProbeStove	22
@@ -57,7 +59,8 @@ extern uint16_t getTemperature(void);
 
 #define DefaultColorIndex	4
 #define DefaultBrightIndex	0
-
+#define DefaultUserTimeLimit	180 //3 minutes
+#define DefaultTemperatureUnit	0 //0:Celsius
 //=== PWM Defines ===
 #define Lightness20P	0x0960
 #define Lightness30P	0x0E10
@@ -108,6 +111,12 @@ extern uint8_t gProbe2Hot; //the NTC is hot
 extern uint8_t gTimerIsOn; //the User Timer in on.
 extern uint8_t gLightingMode; //the lighting mode.
 extern uint8_t gProbe; //which probe to be measured.
+extern uint8_t gTemperatureUnit; //Celsius or Farenheight
+
+//*** UI related ***
+extern uint8_t	gTimerIsOn;
+extern uint8_t	gDoLightFlash;
+extern uint8_t	gLightOn;
 
 extern void init_variables(void);
 extern void init_app(void);

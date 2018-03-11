@@ -79,7 +79,7 @@ void main(void)
 		//P12=0;
 		//P0.2=0;
 		//P12=1;
-		handleLightTask();
+		handleUITask();
 		getDegree();
     }
     /* End user code. Do not edit comment generated here */

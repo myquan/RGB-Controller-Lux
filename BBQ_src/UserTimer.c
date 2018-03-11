@@ -8,7 +8,7 @@
 
 uint8_t gUserTimerCounting=0; //signify whether user timer is counting
 uint16_t gUserTimerCount=0; //when gUserTimerCount reach 0, the time is out.
-uint16_t gUserTimeLimit=60;  //1 count = 1 second, so when user timer is started, initail internalUserTimerCount= gUserTimerLimit x 4
+uint16_t gUserTimeLimit= DefaultUserTimeLimit;  //1 count = 1 second, so when user timer is started, initail internalUserTimerCount= gUserTimerLimit x 4
 static uint16_t internalUserTimerCount;
 
 void startUserTimer(void){
@@ -19,9 +19,13 @@ void startUserTimer(void){
 void checkUserTimeout(void){
 
 	if (internalUserTimerCount==0){
+		gUserTimerCount =0;
+	}else if (internalUserTimerCount ==1){
+		internalUserTimerCount=0;
 		sendEvent(evTimeout);
 	}else{
-		internalUserTimerCount--;		
+		internalUserTimerCount--;
+		gUserTimerCount = internalUserTimerCount / 4 ;
 	}
 			
 }

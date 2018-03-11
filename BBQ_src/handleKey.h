@@ -11,7 +11,8 @@ enum {
 #define ShortPressDuration	5
 #define LongPressDuration	100
 
+
 extern uint8_t gKeyPressedDuration;
 
 extern uint8_t gPressedKey; 
-
+extern uint8_t gDoubleKeyFlag;

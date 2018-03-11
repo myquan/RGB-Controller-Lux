@@ -15,7 +15,7 @@ uint16_t probe2Threshold=50;
 uint16_t rec[50];
 uint8_t head=0;
 uint8_t tail=0;
-uint8_t gTemperatureUnit=0; //Celsius or Fahrenheit
+uint8_t gTemperatureUnit=0; //0:Celsius or 1:Farenheit
 
 uint16_t NTC[26]=	{2949,2922,2882,2825,2745,2638,2514,2339,2147,1957,
 					1709,1490,1281,1089,917,767,638,529,439,365,
@@ -49,16 +49,17 @@ void readTemperature(uint8_t probe){
 			head=head%50;
 			for (tempTableIdx=0; tempTableIdx<30; tempTableIdx++){
 				if (adcVoltage<PT1000[tempTableIdx]){
-					temperature = tempTableIdx*10 - 10*(PT1000[tempTableIdx]-adcVoltage)/(PT1000[tempTableIdx] - PT1000[tempTableIdx-1]);
+					//temperature is 10x large than real temperature. This is for display smoothness.
+					temperature = tempTableIdx*100 - 100*(PT1000[tempTableIdx]-adcVoltage)/(PT1000[tempTableIdx] - PT1000[tempTableIdx-1]);
 					break;
 				}
 			}
 			if (tempTableIdx==30){
 				temperature = 300;
 			}
-			stoveTemperature=(uint16_t)(temperature);
+			stoveTemperature=(uint16_t)(temperature/10);
 			if (gWorkingMode==StoveMode){
-				showTemperature(gTemperatureUnit, stoveTemperature);
+				showTemperature(gTemperatureUnit, temperature);
 			}
 			if (gStoveHot & 0x80){
 				//User have escape temperature sesing. just do nothing.
@@ -89,7 +90,7 @@ void readTemperature(uint8_t probe){
 			}else{
 				for (tempTableIdx=1; tempTableIdx<25; tempTableIdx++){
 					if (adcVoltage>NTC[tempTableIdx]){
-						temperature = tempTableIdx*10 - 10*(adcVoltage-NTC[tempTableIdx])/(NTC[tempTableIdx-1] - NTC[tempTableIdx]);
+						temperature = tempTableIdx*100 - 100*(adcVoltage-NTC[tempTableIdx])/(NTC[tempTableIdx-1] - NTC[tempTableIdx]);
 						break;
 					}
 				}
@@ -97,9 +98,9 @@ void readTemperature(uint8_t probe){
 			if (tempTableIdx==25){
 				temperature = 250;
 			}
-			probe1Temperature=(uint16_t)(temperature);
+			probe1Temperature=(uint16_t)(temperature/10);
 			if (gWorkingMode==Probe1Mode){
-				showTemperature(gTemperatureUnit, probe1Temperature);
+				showTemperature(gTemperatureUnit, temperature);
 			}
 			if (probe1Temperature <380){ //we will not handle temperature greater than 380 Celius
 				if (probe1Temperature >probe1Threshold) {
@@ -128,7 +129,7 @@ void readTemperature(uint8_t probe){
 			}else{
 				for (tempTableIdx=1; tempTableIdx<25; tempTableIdx++){
 					if (adcVoltage>NTC[tempTableIdx]){
-						temperature = tempTableIdx*10 - 10*(adcVoltage-NTC[tempTableIdx])/(NTC[tempTableIdx-1] - NTC[tempTableIdx]);
+						temperature = tempTableIdx*100 - 100*(adcVoltage-NTC[tempTableIdx])/(NTC[tempTableIdx-1] - NTC[tempTableIdx]);
 						break;
 					}
 				}
@@ -138,7 +139,7 @@ void readTemperature(uint8_t probe){
 			}else if (tempTableIdx==0){
 				temperature=0;
 			}
-			probe2Temperature=(uint16_t)(temperature);
+			probe2Temperature=(uint16_t)(temperature/10);
 			if (gWorkingMode==Probe2Mode){
 				showTemperature(gTemperatureUnit, probe2Temperature);
 			}

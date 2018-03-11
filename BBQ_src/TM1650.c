@@ -45,9 +45,14 @@ void  showDigit(uint8_t place, uint8_t digit);
 	//P7.0=0;
 }
 
-void showTemperature(uint8_t unit, uint32_t temperature){
+void showTemperature(uint8_t unit, uint32_t mTemperature){
 	uint8_t D0,D1,D2,D3;
-
+	uint32_t temperature=0;
+	if (unit==1){
+		temperature = mTemperature *9 /50 +32;
+	}else{
+		temperature = mTemperature/10;
+	}
 	D0= (uint8_t)(temperature %10);
 	temperature = temperature / 10;
 	D1= (uint8_t) (temperature %10);
@@ -66,23 +71,33 @@ void showTemperature(uint8_t unit, uint32_t temperature){
 		showDigit(4,Code_F); 
 	}
 }
+
+//**********************
+//* shwoTimer(timeCount)
+//* parameter: timeCount is 250ms
+//*
+//***********************
 void showTimer(uint16_t timeCount){
+	uint8_t seconds=0;
+	uint16_t minutes=0;
 	if (timeCount < 60*4){ //less than 1 minute 00:NN
-		uint8_t seconds = (uint8_t) (timeCount/4);
+		seconds = (uint8_t) (timeCount/4);
 		showDigit(1,0);
 		showDigit(2,0+20);
 		showDigit(3, seconds/10);
 		showDigit(4, seconds%10);
 	}else if (timeCount <3600*4){ //more than 1 minute, but less than 1 hour.  NN:00
-		uint8_t minutes = (uint8_t) (timeCount/240);
+		minutes =  (timeCount/240);
 		if (minutes >9){
 			showDigit(1,minutes / 10);
 		}else{
 			showDigit(1,99); //show nothing
 		}
 		showDigit(2,minutes % 10+20);
-		showDigit(3, 0);
-		showDigit(4, 0);
+		seconds = timeCount % 240;
+		seconds = seconds/4;
+		showDigit(3, seconds / 10);
+		showDigit(4, seconds % 10);
 		
 	}else{ //more than 1 hour // NN:MM
 		uint8_t minutes2;
